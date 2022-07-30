@@ -1,22 +1,22 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
 
-const Contact = sequelize.define('bsc_contact', {
-    contactid: {
+const CompanyAccount = sequelize.define('sec_companyaccount', {
+    companyaccountid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoincrement: true
     },
-    personid: {
+    bsc_company_companyid: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
     },
-    inputtypeid: {
+    sec_account_accountid: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
     },
-    value: {
-        type: Sequelize.STRING(30),
+    createdon: {
+        type: Sequelize.DATE,
         allowNull: false
     },
     createdby: {
@@ -25,16 +25,20 @@ const Contact = sequelize.define('bsc_contact', {
     },
     modifiedon: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     modifiedby: {
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: true
     },
+    isActive: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
+    }
 }, {
     timestamps: false,
     freezeTableName: true,
     underscored: true
 });
 
-export default Contact;
+export default CompanyAccount;

@@ -43,7 +43,4 @@ const Country = sequelize.define('bsc_country', {
 Country.hasMany(City, { as: 'city', foreingKey: 'country_countryid', soourceKey: 'countryid' });
 City.belongsTo(Country, { as: 'country', foreingKey: 'country_countryid', soourceKey: 'countryid' });
 
-Country.hasMany(Person, { foreingKey: 'countryid', soourceKey: 'countryid' });
-Person.belongsTo(Country, { foreingKey: 'countryid', soourceKey: 'countryid' });
-
 export default Country;

@@ -124,12 +124,16 @@ export async function getCatalogvalueByCatalog(req, res) {
         await Catalogvalue.sequelize.query('SELECT * FROM public.bsc_GetCatalogValues (:vname)', { replacements: { vname: name, } }, { type: Catalogvalue.sequelize.QueryTypes.SELECT })
             .then(function(catalogvalue) {
                 res.json(catalogvalue[0])
-            }).error(function(err) {
-                res.json(err);
             });
+        // .error(function(err) {
+        //     res.json(err);
+        // });
 
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            message: error + "Error al obtener los catalogos.",
+            data: {}
+        });
     }
 }
 

@@ -1,25 +1,26 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
+import { Contact } from '../basic/Contact';
 
 const Person = sequelize.define('bsc_person', {
     personid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoincrement: true
+        autoIncrement: true
     },
     firstname: {
         type: Sequelize.STRING(255),
         allowNull: false
     },
-    lastName: {
+    last_name: {
         type: Sequelize.STRING(255),
         allowNull: true
     },
-    genderID: {
+    gender_i_d: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    identificationType: {
+    identification_type: {
         type: Sequelize.INTEGER,
         allowNull: true
     },
@@ -27,11 +28,7 @@ const Person = sequelize.define('bsc_person', {
         type: Sequelize.STRING(150),
         allowNull: true
     },
-    city_cityid: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    countryid: {
+    bsc_city_cityid: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
@@ -75,10 +72,23 @@ const Person = sequelize.define('bsc_person', {
         type: Sequelize.STRING(30),
         allowNull: true
     },
+    bsc_company_companyid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    bsc_catalogvalue_catalogvalueid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    }
 }, {
     timestamps: false,
     freezeTableName: true,
     underscored: true
 });
+
+
+Person.hasMany(Contact, { as: 'Persons', foreingKey: 'personid', soourceKey: 'personid' });
+Contact.belongsTo(Person, { foreingKey: 'personid', soourceKey: 'personid' });
+
 
 export default Person;

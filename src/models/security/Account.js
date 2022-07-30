@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
 import Accountrole from '../security/Accountrole';
+import CompanyAccount from '../basic/CompanyAccount'
 
 const Account = sequelize.define('sec_account', {
     accountid: {
@@ -71,6 +72,11 @@ const Account = sequelize.define('sec_account', {
 
 Account.hasMany(Accountrole, { as: 'accountrole', foreingKey: 'account_accountid', soourceKey: 'accountid' });
 Accountrole.belongsTo(Account, { as: 'account', foreingKey: 'account_accountid', soourceKey: 'accountid' });
+
+//Referencia a CompanyAccount
+Account.hasMany(CompanyAccount, { foreingKey: 'sec_account_accountid', soourceKey: 'accountid' });
+CompanyAccount.belongsTo(Account, { foreingKey: 'sec_account_accountid', soourceKey: 'accountid' });
+
 
 //Account.hasMany(Accountrole, { foreingKey: 'accountid', soourceKey: 'accountid' });
 //Accountrole.belongsTo(Account, { foreingKey: 'accountid', soourceKey: 'accountid' });

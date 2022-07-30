@@ -1,8 +1,12 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
+import CompanyAccount from "./CompanyAccount.js";
+import Category from '../inventory/Category.js';
+import Brands from "./Brands.js";
+import Person from "./Person.js";
 
-const Branch = sequelize.define('bsc_branch', {
-    branchid: {
+const Company = sequelize.define('bsc_company', {
+    companyid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoincrement: true
@@ -19,7 +23,7 @@ const Branch = sequelize.define('bsc_branch', {
         type: Sequelize.INTEGER,
         allowNull: true
     },
-    city_cityid: {
+    bsc_city_cityid: {
         type: Sequelize.INTEGER,
         allowNull: true
     },
@@ -53,4 +57,17 @@ const Branch = sequelize.define('bsc_branch', {
     underscored: true
 });
 
-export default Branch;
+Company.hasMany(CompanyAccount, { foreingKey: 'companyid', soourceKey: 'companyid' });
+CompanyAccount.belongsTo(Company, { foreingKey: 'companyid', soourceKey: 'companyid' });
+
+Company.hasMany(Category, { foreingKey: 'companyid', soourceKey: 'companyid' });
+Category.belongsTo(Company, { foreingKey: 'companyid', soourceKey: 'companyid' });
+
+Company.hasMany(Brands, { foreingKey: 'companyid', soourceKey: 'companyid' });
+Brands.belongsTo(Company, { foreingKey: 'companyid', soourceKey: 'companyid' });
+
+Company.hasMany(Person, { foreingKey: 'companyid', soourceKey: 'companyid' });
+Person.belongsTo(Company, { foreingKey: 'companyid', soourceKey: 'companyid' });
+
+
+export default Company;

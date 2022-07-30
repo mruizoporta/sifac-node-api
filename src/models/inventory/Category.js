@@ -1,43 +1,53 @@
 import Sequelize from 'sequelize';
-import {sequelize} from '../../database/database';
+import { sequelize } from '../../database/database';
+import Products from "../inventory/Products";
 
-const Category= sequelize.define('category', {
-    categoryid:
-    {
+const Category = sequelize.define('inv_category', {
+    categoryid: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
-    name:
-    {
-        type: Sequelize.TEXT
+    name: {
+        type: Sequelize.STRING(50),
+        allowNull: false
     },
-    description:
-    {
-        type: Sequelize.TEXT
+    description: {
+        type: Sequelize.STRING(100),
+        allowNull: true
     },
-    isactive:
-    {
-        type: Sequelize.BOOLEAN
+    isactive: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
     },
-    createdon:
-    {
-        type: Sequelize.DATE
+    createdon: {
+        type: Sequelize.DATE,
+        allowNull: false
     },
-    createdby:
-    {
-        type: Sequelize.TEXT
+    createdby: {
+        type: Sequelize.STRING(30),
+        allowNull: false
     },
-    modifiedon:
-    {
-        type: Sequelize.DATE
+    modifiedon: {
+        type: Sequelize.DATE,
+        allowNull: true
     },
-    modifiedby:
-    {
-        type: Sequelize.TEXT
-    }  
-},{
-    timestamps: false
+    modifiedby: {
+        type: Sequelize.STRING(30),
+        allowNull: true
+    },
+    bsc_company_companyid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+}, {
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true
 });
 
-export default Category;
 
+Category.hasMany(Products, { foreingKey: 'categoryid', soourceKey: 'categoryid' });
+Products.belongsTo(Category, { foreingKey: 'categoryid', soourceKey: 'categoryid' });
+
+export default Category;

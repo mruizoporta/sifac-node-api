@@ -19,7 +19,12 @@ class Server {
         this.catalogvaluePath = '/api/catalogvalue';
         this.cityPath = '/api/city';
         this.countryPath = '/api/country';
-
+        this.companyPath = '/api/company';
+        this.companyAccountPath = '/api/companyaccount';
+        this.categoryPath = '/api/category';
+        this.brandPath = '/api/brand';
+        this.personPath = '/api/person';
+        this.contactPath = '/api/contact';
         //Middlewares
         this.middlewares();
         //Rutas de aplicacion
@@ -43,6 +48,12 @@ class Server {
         this.app.use(this.catalogvaluePath, require('../routes/catalogvalue'));
         this.app.use(this.cityPath, require('../routes/city'));
         this.app.use(this.countryPath, require('../routes/country'));
+        this.app.use(this.companyPath, require('../routes/company'));
+        this.app.use(this.companyAccountPath, require('../routes/companyaccount'));
+        this.app.use(this.categoryPath, require('../routes/category'));
+        this.app.use(this.brandPath, require('../routes/brand'));
+        this.app.use(this.personPath, require('../routes/person'));
+        this.app.use(this.contactPath, require('../routes/contact'));
 
     }
 

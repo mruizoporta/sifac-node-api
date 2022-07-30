@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../database/database.js';
-import Branch from './Branch';
+import Contact from './Contact';
 import Person from './Person';
 
 const Catalogvalue = sequelize.define('bsc_catalogvalues', {
@@ -44,16 +44,22 @@ const Catalogvalue = sequelize.define('bsc_catalogvalues', {
     underscored: true
 });
 
-Catalogvalue.hasMany(Branch, { foreingKey: 'statusid', soourceKey: 'catalogvalueid' });
-Branch.belongsTo(Catalogvalue, { foreignKey: 'statusid', soourceKey: 'catalogvalueid' });
+// Catalogvalue.hasMany(Company, { foreingKey: 'statusid', soourceKey: 'catalogvalueid' });
+// Company.belongsTo(Catalogvalue, { foreignKey: 'statusid', soourceKey: 'catalogvalueid' });
 
-Catalogvalue.hasMany(Person, { foreingKey: 'genderID', soourceKey: 'catalogvalueid' });
-Person.belongsTo(Catalogvalue, { foreignKey: 'genderID', soourceKey: 'catalogvalueid' });
+//Person
+Catalogvalue.hasMany(Person, { as: 'gender', foreingKey: 'genderID', soourceKey: 'catalogvalueid' });
+Person.belongsTo(Catalogvalue, { as: 'gender', foreignKey: 'genderID', soourceKey: 'catalogvalueid' });
 
-Catalogvalue.hasMany(Person, { foreingKey: 'identificationType', soourceKey: 'catalogvalueid' });
-Person.belongsTo(Catalogvalue, { foreignKey: 'identificationType', soourceKey: 'catalogvalueid' });
+Catalogvalue.hasMany(Person, { as: 'identitype', foreingKey: 'identificationType', soourceKey: 'catalogvalueid' });
+Person.belongsTo(Catalogvalue, { as: 'identitype', foreignKey: 'identificationType', soourceKey: 'catalogvalueid' });
 
-Catalogvalue.hasMany(Person, { foreingKey: 'maritalstatusid', soourceKey: 'catalogvalueid' });
-Person.belongsTo(Catalogvalue, { foreignKey: 'maritalstatusid', soourceKey: 'catalogvalueid' });
+Catalogvalue.hasMany(Person, { as: 'maritalpersonid', foreingKey: 'maritalstatusid', soourceKey: 'catalogvalueid' });
+Person.belongsTo(Catalogvalue, { as: 'maritalpersonid', foreignKey: 'maritalstatusid', soourceKey: 'catalogvalueid' });
+
+//Contact
+Catalogvalue.hasMany(Contact, { as: 'inputtype', foreingKey: 'inputtypeid', soourceKey: 'catalogvalueid' });
+Contact.belongsTo(Catalogvalue, { as: 'inputtype', foreignKey: 'inputtypeid', soourceKey: 'catalogvalueid' });
+
 
 export default Catalogvalue;

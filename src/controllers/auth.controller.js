@@ -44,8 +44,9 @@ const loginUsuario = async(req, res = response) => {
 
         return res.json({
             ok: true,
-            id: usuario.accountid,
+            accountid: usuario.accountid,
             email: usuario.email,
+            login: usuario.login,
             token
         })
 

@@ -1,7 +1,8 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../database/database.js';
-import Branch from './Branch.js';
+import Company from './Company';
 import Person from './Person';
+//import Country from './Country.js';
 
 const City = sequelize.define('bsc_city', {
     cityid: {
@@ -39,10 +40,16 @@ const City = sequelize.define('bsc_city', {
     underscored: true
 });
 
-City.hasMany(Branch, { foreingKey: 'city_cityid', soourceKey: 'cityid' });
-Branch.belongsTo(City, { foreignKey: 'city_cityid', soourceKey: 'cityid' });
+// Country.hasMany(City, { as: 'city', foreingKey: 'country_countryid', soourceKey: 'countryid' });
+// City.belongsTo(Country, { as: 'country', foreingKey: 'country_countryid', soourceKey: 'countryid' });
 
-City.hasMany(Person, { foreingKey: 'city_cityid', soourceKey: 'cityid' });
-Person.belongsTo(City, { foreingKey: 'city_cityid', soourceKey: 'cityid' });
+City.hasMany(Company, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
+Company.belongsTo(City, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
+
+City.hasMany(Person, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
+Person.belongsTo(City, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
+
+// City.hasMany(Company, { as: 'company', foreingKey: 'city_cityid', soourceKey: 'cityid' });
+// Company.belongsTo(City, { as: 'company_city', foreingKey: 'city_cityid', soourceKey: 'cityid' });
 
 export default City;

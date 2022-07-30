@@ -1,11 +1,12 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
+import Products from "../inventory/Products";
 
-const Brand = sequelize.define('bsc_brands', {
+const Brands = sequelize.define('bsc_brands', {
     brandid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoincrement: true
+        autoIncrement: true
     },
     name: {
         type: Sequelize.STRING(50),
@@ -35,10 +36,18 @@ const Brand = sequelize.define('bsc_brands', {
         type: Sequelize.STRING(30),
         allowNull: true
     },
+    bsc_company_companyid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    }
 }, {
     timestamps: false,
     freezeTableName: true,
     underscored: true
 });
 
-export default Brand;
+Brands.hasMany(Products, { foreingKey: 'brandid', soourceKey: 'brandid' });
+Products.belongsTo(Brands, { foreingKey: 'brandid', soourceKey: 'brandid' });
+
+
+export default Brands;
