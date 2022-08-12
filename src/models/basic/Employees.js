@@ -1,20 +1,17 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
 import Account from '../security/Account';
+import Routes from "./RoutesCollector.js";
 
 const Employees = sequelize.define('bsc_employees', {
     employeesid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoincrement: true
+        autoIncrement: true
     },
-    personaid: {
+    personid: {
         type: Sequelize.INTEGER,
         allowNull: false
-    },
-    branchid: {
-        type: Sequelize.INTEGER,
-        allowNull: true
     },
     isactive: {
         type: Sequelize.BOOLEAN,
@@ -32,6 +29,10 @@ const Employees = sequelize.define('bsc_employees', {
         type: Sequelize.INTEGER,
         allowNull: true
     },
+    createdon: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
     createdby: {
         type: Sequelize.STRING(30),
         allowNull: false
@@ -44,6 +45,15 @@ const Employees = sequelize.define('bsc_employees', {
         type: Sequelize.STRING(30),
         allowNull: true
     },
+    bsc_company_companyid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+
+    bsc_catalogvalue_catalogvalueid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    }
 }, {
     timestamps: false,
     freezeTableName: true,
@@ -52,6 +62,12 @@ const Employees = sequelize.define('bsc_employees', {
 
 Employees.hasMany(Account, { foreingKey: 'employeesid', soourceKey: 'employeesid' });
 Account.belongsTo(Employees, { foreingKey: 'employeesid', soourceKey: 'employeesid' });
+
+Employees.hasMany(Routes, { foreingKey: 'collectorid', soourceKey: 'employeesid' });
+Routes.belongsTo(Employees, { foreingKey: 'collectorid', soourceKey: 'employeesid' });
+
+Employees.hasMany(Routes, { foreingKey: 'supervisorid', soourceKey: 'employeesid' });
+Routes.belongsTo(Employees, { foreingKey: 'supervisorid', soourceKey: 'employeesid' });
 
 
 export default Employees;

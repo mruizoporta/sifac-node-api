@@ -4,9 +4,9 @@ import { sequelize } from '../database/database.js';
 async function createPerson(req, res) {
     const {
         firstname,
-        lastName,
+        last_name,
         gender_i_d,
-        identificationType,
+        identification_type,
         identification,
         bsc_city_cityid,
         address,
@@ -25,9 +25,9 @@ async function createPerson(req, res) {
     try {
         let newPerson = await Person.create({
             firstname,
-            lastName,
+            last_name,
             gender_i_d,
-            identificationType,
+            identification_type,
             identification,
             bsc_city_cityid,
             address,

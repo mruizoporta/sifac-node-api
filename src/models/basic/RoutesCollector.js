@@ -1,23 +1,39 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
 
-const Contact = sequelize.define('bsc_contact', {
-    contactid: {
+const Routes = sequelize.define('bsc_routes', {
+    routeid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    personid: {
-        type: Sequelize.INTEGER,
+    name: {
+        type: Sequelize.STRING(100),
         allowNull: false
     },
-    inputtypeid: {
-        type: Sequelize.INTEGER,
+    code: {
+        type: Sequelize.STRING(100),
         allowNull: false
     },
-    value: {
+    day: {
         type: Sequelize.STRING(30),
         allowNull: false
+    },
+    bsc_city_cityid: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    collectorid: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    supervisorid: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    isactive: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
     },
     createdon: {
         type: Sequelize.DATE,
@@ -29,13 +45,21 @@ const Contact = sequelize.define('bsc_contact', {
     },
     modifiedon: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     modifiedby: {
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: true
     },
-    bsc_catalogvalue_catalogvalueid: {
+    bsc_company_companyid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    zoneid: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    secretariaid: {
         type: Sequelize.INTEGER,
         allowNull: true
     }
@@ -45,4 +69,4 @@ const Contact = sequelize.define('bsc_contact', {
     underscored: true
 });
 
-export default Contact;
+export default Routes;

@@ -45,9 +45,9 @@ async function getCitybyCountry(req, res) {
                 ['name', 'ASC']
             ]
         });
-        res.json({
-            data: city
-        })
+        res.json(
+            city
+        )
     } catch (error) {
         console.log(error);
     }

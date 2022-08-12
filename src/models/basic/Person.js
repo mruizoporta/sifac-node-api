@@ -87,8 +87,8 @@ const Person = sequelize.define('bsc_person', {
 });
 
 
-Person.hasMany(Contact, { as: 'Persons', foreingKey: 'personid', soourceKey: 'personid' });
-Contact.belongsTo(Person, { foreingKey: 'personid', soourceKey: 'personid' });
+//Person.hasMany(Contact, { as: 'Person', foreingKey: 'personid', soourceKey: 'personid' });
+//Contact.belongsTo(Person, { foreingKey: 'personid', soourceKey: 'personid' });
 
 
 export default Person;

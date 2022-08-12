@@ -1,22 +1,30 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+import Sequelize from 'sequelize';
+import { sequelize } from '../../database/database';
 
-const Contact = sequelize.define('bsc_contact', {
-    contactid: {
+const Store = sequelize.define('inv_store', {
+    storeid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    personid: {
+    name: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+    },
+    code: {
+        type: Sequelize.STRING(4),
+        allowNull: true
+    },
+    bsc_city_cityid: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    inputtypeid: {
+    managerid: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    value: {
-        type: Sequelize.STRING(30),
+    isactive: {
+        type: Sequelize.BOOLEAN,
         allowNull: false
     },
     createdon: {
@@ -29,20 +37,21 @@ const Contact = sequelize.define('bsc_contact', {
     },
     modifiedon: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     modifiedby: {
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: true
     },
-    bsc_catalogvalue_catalogvalueid: {
+    bsc_company_companyid: {
         type: Sequelize.INTEGER,
         allowNull: true
-    }
+    },
 }, {
     timestamps: false,
     freezeTableName: true,
     underscored: true
 });
 
-export default Contact;
+
+export default Store;

@@ -19,6 +19,12 @@ import categoryRoutes from './routes/category.js';
 import brandRoutes from './routes/brand.js';
 import personRoutes from './routes/person.js';
 import contactRoutes from './routes/contact';
+import employeeRoutes from './routes/employee';
+import routesRoutes from './routes/routescollector';
+import zoneRoutes from './routes/zone';
+import storeRoutes from './routes/store';
+import productRoutes from './routes/product';
+import productstoreRoutes from './routes/productstore';
 
 //probando
 //Initialization
@@ -39,5 +45,11 @@ app.use('/api/category', categoryRoutes);
 app.use('/api/brand', brandRoutes);
 app.use('/api/person', personRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/empleado', employeeRoutes);
+app.use('/api/route', routesRoutes);
+app.use('/api/zone', zoneRoutes);
+app.use('/api/store', storeRoutes)
+app.use('/api/product', productRoutes);
+app.use('/api/productstore', productstoreRoutes);
 
 export default app;

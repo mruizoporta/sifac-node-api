@@ -1,23 +1,19 @@
 import Sequelize from "sequelize";
 import { sequelize } from '../../database/database.js';
 
-const Contact = sequelize.define('bsc_contact', {
-    contactid: {
+const Zone = sequelize.define('bsc_zone', {
+    zoneid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    personid: {
-        type: Sequelize.INTEGER,
+    name: {
+        type: Sequelize.STRING(50),
         allowNull: false
     },
-    inputtypeid: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    value: {
-        type: Sequelize.STRING(30),
-        allowNull: false
+    isactive: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
     },
     createdon: {
         type: Sequelize.DATE,
@@ -29,13 +25,13 @@ const Contact = sequelize.define('bsc_contact', {
     },
     modifiedon: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     modifiedby: {
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: true
     },
-    bsc_catalogvalue_catalogvalueid: {
+    bsc_company_companyid: {
         type: Sequelize.INTEGER,
         allowNull: true
     }
@@ -45,4 +41,8 @@ const Contact = sequelize.define('bsc_contact', {
     underscored: true
 });
 
-export default Contact;
+// Zone.hasMany(Routes, { foreingKey: 'zoneid', soourceKey: 'zoneid' });
+// Routes.belongsTo(Zone, { foreingKey: 'zoneid', soourceKey: 'zoneid' });
+
+
+export default Zone;

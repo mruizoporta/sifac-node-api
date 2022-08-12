@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import { sequelize } from '../../database/database.js';
 import Company from './Company';
 import Person from './Person';
+import Routes from './RoutesCollector.js';
 //import Country from './Country.js';
 
 const City = sequelize.define('bsc_city', {
@@ -48,6 +49,9 @@ Company.belongsTo(City, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' })
 
 City.hasMany(Person, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
 Person.belongsTo(City, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
+
+City.hasMany(Routes, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
+Routes.belongsTo(City, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
 
 // City.hasMany(Company, { as: 'company', foreingKey: 'city_cityid', soourceKey: 'cityid' });
 // Company.belongsTo(City, { as: 'company_city', foreingKey: 'city_cityid', soourceKey: 'cityid' });

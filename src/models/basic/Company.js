@@ -4,6 +4,8 @@ import CompanyAccount from "./CompanyAccount.js";
 import Category from '../inventory/Category.js';
 import Brands from "./Brands.js";
 import Person from "./Person.js";
+import Routes from "./RoutesCollector.js";
+import Products from "../inventory/Products.js";
 
 const Company = sequelize.define('bsc_company', {
     companyid: {
@@ -68,6 +70,12 @@ Brands.belongsTo(Company, { foreingKey: 'companyid', soourceKey: 'companyid' });
 
 Company.hasMany(Person, { foreingKey: 'companyid', soourceKey: 'companyid' });
 Person.belongsTo(Company, { foreingKey: 'companyid', soourceKey: 'companyid' });
+
+Company.hasMany(Routes, { foreingKey: 'bsc_company_companyid', soourceKey: 'companyid' });
+Routes.belongsTo(Company, { foreingKey: 'bsc_company_companyid', soourceKey: 'companyid' });
+
+Company.hasMany(Products, { foreingKey: 'bsc_company_companyid', soourceKey: 'companyid' });
+Products.belongsTo(Company, { foreingKey: 'bsc_company_companyid', soourceKey: 'companyid' });
 
 
 export default Company;

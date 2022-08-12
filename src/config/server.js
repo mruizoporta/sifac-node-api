@@ -25,6 +25,13 @@ class Server {
         this.brandPath = '/api/brand';
         this.personPath = '/api/person';
         this.contactPath = '/api/contact';
+        this.employeePath = '/api/empleado';
+        this.routesPath = '/api/route';
+        this.zonePath = '/api/zone';
+        this.storePath = '/api/store';
+        this.productPath = '/api/product';
+        this.productstorePath = '/api/productstore';
+
         //Middlewares
         this.middlewares();
         //Rutas de aplicacion
@@ -54,6 +61,12 @@ class Server {
         this.app.use(this.brandPath, require('../routes/brand'));
         this.app.use(this.personPath, require('../routes/person'));
         this.app.use(this.contactPath, require('../routes/contact'));
+        this.app.use(this.employeePath, require('../routes/employee'));
+        this.app.use(this.routesPath, require('../routes/routescollector'));
+        this.app.use(this.zonePath, require('../routes/zone'));
+        this.app.use(this.storePath, require('../routes/store'));
+        this.app.use(this.productPath, require('../routes/product'));
+        this.app.use(this.productstorePath, require('../routes/productstore'));
 
     }
 

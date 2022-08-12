@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import { sequelize } from '../../database/database.js';
 import Contact from './Contact';
 import Person from './Person';
+import Employee from './Employees';
 
 const Catalogvalue = sequelize.define('bsc_catalogvalues', {
 
@@ -60,6 +61,10 @@ Person.belongsTo(Catalogvalue, { as: 'maritalpersonid', foreignKey: 'maritalstat
 //Contact
 Catalogvalue.hasMany(Contact, { as: 'inputtype', foreingKey: 'inputtypeid', soourceKey: 'catalogvalueid' });
 Contact.belongsTo(Catalogvalue, { as: 'inputtype', foreignKey: 'inputtypeid', soourceKey: 'catalogvalueid' });
+
+//Employee
+Catalogvalue.hasMany(Employee, { as: 'position', foreingKey: 'positionid', soourceKey: 'catalogvalueid' });
+Employee.belongsTo(Catalogvalue, { as: 'position', foreignKey: 'positionid', soourceKey: 'catalogvalueid' });
 
 
 export default Catalogvalue;

@@ -39,7 +39,7 @@ const Account = sequelize.define('sec_account', {
         type: Sequelize.DATE,
         allowNull: true
     },
-    employeeid: {
+    bsc_employee_employeesid: {
         type: Sequelize.INTEGER,
         allowNull: true
     },
