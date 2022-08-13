@@ -68,33 +68,24 @@ async function getZones(req, res) {
 
 async function updateZona(req, res) {
     const { id } = req.params;
-    const { name, modifiedon, modifiedby, isactive } = req.body;
+    const { name, modifiedon, modifiedby } = req.body;
     try {
-        const brand = await Zone.findAll({
-            attributes: ['zoneid', 'name', 'modifiedon', 'modifiedby', 'isactive'],
+
+        var values = {
+            name,
+            modifiedon,
+            modifiedby
+        };
+        var selector = {
             where: {
                 zoneid: id
             }
-        });
-
-        if (brand.length > 0) {
-            brand.forEach(
-
-                async Brand => {
-                    await Zone.update({
-                            name,
-                            modifiedon,
-                            modifiedby,
-                            isactive
-                        }
-
-                    );
-                })
-        }
+        };
+        const zone = await Zone.update(values, selector);
 
         return res.json({
             message: 'Zona actualizada satisfactoriamente',
-            data: brand
+            data: zone
         })
 
     } catch (error) {

@@ -45,6 +45,14 @@ const Employees = sequelize.define('bsc_employees', {
         type: Sequelize.STRING(30),
         allowNull: true
     },
+    telefono: {
+        type: Sequelize.STRING(50),
+        allowNull: true
+    },
+    email: {
+        type: Sequelize.STRING(100),
+        allowNull: true
+    },
     bsc_company_companyid: {
         type: Sequelize.INTEGER,
         allowNull: true

@@ -54,7 +54,9 @@ async function createEmpleado(req, res) {
         createdby,
         modifiedon,
         modifiedby,
-        bsc_company_companyid
+        bsc_company_companyid,
+        email,
+        telefono
     } = req.body;
 
     try {
@@ -68,7 +70,9 @@ async function createEmpleado(req, res) {
             createdby,
             modifiedon,
             modifiedby,
-            bsc_company_companyid
+            bsc_company_companyid,
+            email,
+            telefono
         });
 
         if (newEmployee) {
@@ -109,7 +113,9 @@ async function createEmpleadoWithPerson(req, res) {
         createdby,
         modifiedon,
         modifiedby,
-        bsc_company_companyid
+        bsc_company_companyid,
+        email,
+        telefono
 
     } = req.body;
 
@@ -132,7 +138,9 @@ async function createEmpleadoWithPerson(req, res) {
             createdby,
             modifiedon,
             modifiedby,
-            bsc_company_companyid
+            bsc_company_companyid,
+            email,
+            telefono
         })
 
         let newEmployee = await Employees.create({
@@ -145,7 +153,9 @@ async function createEmpleadoWithPerson(req, res) {
             createdby,
             modifiedon,
             modifiedby,
-            bsc_company_companyid
+            bsc_company_companyid,
+            email,
+            telefono
         });
 
         if (newEmployee) {
@@ -211,6 +221,8 @@ async function updateEmployee(req, res) {
         islegal,
         businessname,
         companyacronym,
+        email,
+        telefono,
 
         datestarted,
         dateended,
@@ -250,7 +262,7 @@ async function updateEmployee(req, res) {
         //  console.log(employee[0].dataValues.personid);
         const person = await Person.findAll({
             attributes: ['personid', 'firstname', 'last_name', 'identification', 'bsc_city_cityid', 'address', 'birthdate', 'islegal',
-                'businessname', 'companyacronym', 'gender_i_d', 'maritalstatusid', 'identification_type', 'modifiedon', 'modifiedby'
+                'businessname', 'companyacronym', 'gender_i_d', 'maritalstatusid', 'identification_type', 'modifiedon', 'modifiedby', 'email', 'correo'
             ],
             where: {
                 personid: employee[0].dataValues.personid
@@ -276,7 +288,9 @@ async function updateEmployee(req, res) {
                             maritalstatusid,
                             identification_type: identificationType,
                             modifiedon,
-                            modifiedby
+                            modifiedby,
+                            email,
+                            telefono
                         }
 
                     );
