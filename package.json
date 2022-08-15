@@ -7,9 +7,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon src/app.js --exec babel-node",
+        "dev": "nodemon index.js --exec babel-node",
         "build": "babel src --out-dir dist",
-        "start": "node src/app.js"
+        "start": "node index.js"
     },
     "keywords": [],
     "author": "Blessing S.A",
@@ -36,6 +36,5 @@
         "@babel/preset-env": "^7.18.6",
         "nodemon": "^2.0.14",
         "webpack-cli": "^3.3.12"
-    },
-    "type": "module"
+    }
 }
