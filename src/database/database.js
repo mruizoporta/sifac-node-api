@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-const env = process.env.NODE_ENV
-export const sequelize = new Sequelize(
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize(
     'blessja2_SIFAC',
     'blessja2_ADMINSIFAC',
     'Blessing2021$', {
@@ -15,3 +15,7 @@ export const sequelize = new Sequelize(
         logging: false // Para que no muestre mas mensajes en consola
     }
 )
+
+module.exports = {
+    sequelize
+}

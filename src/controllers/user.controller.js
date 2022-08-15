@@ -1,7 +1,7 @@
 const { response, default: e } = require('express');
 const { generarJWT } = require('../helpers/generar-jwt');
-import Account from '../models/security/Account.js';
-import { encrypt } from '../helpers/handleBcrypt.js';
+const Account = require('../models/security/Account.js');
+const { encrypt } = require('../helpers/handleBcrypt.js');
 
 async function usuariosGet(req, res) {
     try {

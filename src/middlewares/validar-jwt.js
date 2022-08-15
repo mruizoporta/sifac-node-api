@@ -1,6 +1,6 @@
 const { response } = require('express');
 const jwt = require('jsonwebtoken');
-import Account from '../models/security/Account';
+const Account = require('../models/security/Account');
 
 const validarJWT = async(req = request, res = response, next) => {
 

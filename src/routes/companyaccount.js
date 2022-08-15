@@ -1,8 +1,6 @@
-import { Router } from 'express';
-
+const { Router } = require('express');
 const router = Router();
-
-import { getCompanybyAccount } from '../controllers/companyaccount.controller.js';
+const { getCompanybyAccount } = require('../controllers/companyaccount.controller.js');
 
 //api/companyaccount/
 router.get('/:accountid', getCompanybyAccount);

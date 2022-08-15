@@ -1,5 +1,5 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../../database/database';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Products = sequelize.define('inv_products', {
     productsid: {
@@ -86,4 +86,4 @@ const Products = sequelize.define('inv_products', {
     underscored: true
 });
 
-export default Products;
+module.exports = Products;

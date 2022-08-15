@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Contact = sequelize.define('bsc_contact', {
     contactid: {
@@ -45,4 +45,4 @@ const Contact = sequelize.define('bsc_contact', {
     underscored: true
 });
 
-export default Contact;
+module.exports = Contact;

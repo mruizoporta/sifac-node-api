@@ -1,7 +1,6 @@
-import Products from '../models/inventory/Products';
-import StoreProducts from '../models/inventory/StoreProducts';
-import { sequelize } from '../database/database.js';
-
+const Products = require('../models/inventory/Products');
+const StoreProducts = require('../models/inventory/StoreProducts');
+const { sequelize } = require('../database/database.js');
 
 async function createProduct(req, res) {
     let bodega = 0;

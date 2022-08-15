@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Routes = sequelize.define('bsc_routes', {
     routeid: {
@@ -69,4 +69,4 @@ const Routes = sequelize.define('bsc_routes', {
     underscored: true
 });
 
-export default Routes;
+module.exports = Routes;

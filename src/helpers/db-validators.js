@@ -1,5 +1,5 @@
-import Role from '../models/security/Role';
-import Account from '../models/security/Account';
+const Role = require('../models/security/Role');
+const Account = require('../models/security/Account');
 
 const esRolValido = async(rol = '') => {
     const exissteRol = await Role.findOne({

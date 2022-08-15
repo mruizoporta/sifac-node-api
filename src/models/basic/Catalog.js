@@ -1,60 +1,52 @@
-import Sequelize from 'sequelize';
-import {sequelize} from '../../database/database.js';
-import Catalogvalue from './Catalogvalue.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Catalogvalue = require('./Catalogvalue.js');
 
-const Catalog= sequelize.define('bsc_catalogs', {
-    
-    catalogid: 
-    {
+const Catalog = sequelize.define('bsc_catalogs', {
+
+    catalogid: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true 
+        autoIncrement: true
     },
-    name:
-    {
+    name: {
         type: Sequelize.STRING(50),
-        allowNull:false
+        allowNull: false
     },
-    description:
-    {
+    description: {
         type: Sequelize.STRING(250),
-        allowNull:true
+        allowNull: true
     },
-    createdon:
-    {
+    createdon: {
         type: Sequelize.DATE,
-        allowNull:false
+        allowNull: false
     },
-    createdby:
-    {
+    createdby: {
         type: Sequelize.STRING(30),
-        allowNull:false
+        allowNull: false
     },
-    modifiedon:
-    {
+    modifiedon: {
         type: Sequelize.DATE,
-        allowNull:true
+        allowNull: true
     },
-    modifiedby:
-    {
+    modifiedby: {
         type: Sequelize.STRING(30),
-        allowNull:true
+        allowNull: true
     },
-    isactive:
-    {
+    isactive: {
         type: Sequelize.BOOLEAN,
-        allowNull:true
-    }    
-},{
-   timestamps : false,
-   freezeTableName: true,
-   underscored: true
+        allowNull: true
+    }
+}, {
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true
 });
 
 
-Catalog.hasMany(Catalogvalue, { as: 'catalogvalue',foreingKey: 'catalog_catalogid', soourceKey: 'catalogid' });
-Catalogvalue.belongsTo(Catalog,{ as: 'catalog' ,foreingKey: 'catalog_catalogid', soourceKey: 'catalogid' });
-   
+Catalog.hasMany(Catalogvalue, { as: 'catalogvalue', foreingKey: 'catalog_catalogid', soourceKey: 'catalogid' });
+Catalogvalue.belongsTo(Catalog, { as: 'catalog', foreingKey: 'catalog_catalogid', soourceKey: 'catalogid' });
 
 
-export default Catalog;
+
+module.exports = Catalog;

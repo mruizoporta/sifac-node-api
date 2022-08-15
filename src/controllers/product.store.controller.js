@@ -1,5 +1,5 @@
-import StoreProducts from '../models/inventory/StoreProducts';
-import Products from '../models/inventory/Products';
+const StoreProducts = require('../models/inventory/StoreProducts');
+const Products = require('../models/inventory/Products');
 
 async function createProductStore(req, res) {
     const { productid, storeid, quantity, createdon, createdby, modifiedon, modifiedby, isactive, bsc_company_companyid } = req.body;

@@ -1,6 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import { Contact } from '../basic/Contact';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Person = sequelize.define('bsc_person', {
     personid: {
@@ -91,4 +90,4 @@ const Person = sequelize.define('bsc_person', {
 //Contact.belongsTo(Person, { foreingKey: 'personid', soourceKey: 'personid' });
 
 
-export default Person;
+module.exports = Person;

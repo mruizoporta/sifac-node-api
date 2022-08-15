@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const CompanyAccount = sequelize.define('sec_companyaccount', {
     companyaccountid: {
@@ -41,4 +41,4 @@ const CompanyAccount = sequelize.define('sec_companyaccount', {
     underscored: true
 });
 
-export default CompanyAccount;
+module.exports = CompanyAccount;

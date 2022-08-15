@@ -1,8 +1,8 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../../database/database.js';
-import Contact from './Contact';
-import Person from './Person';
-import Employee from './Employees';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Contact = require('./Contact');
+const Person = require('./Person');
+const Employee = require('./Employees');
 
 const Catalogvalue = sequelize.define('bsc_catalogvalues', {
 
@@ -67,4 +67,4 @@ Catalogvalue.hasMany(Employee, { as: 'position', foreingKey: 'positionid', soour
 Employee.belongsTo(Catalogvalue, { as: 'position', foreignKey: 'positionid', soourceKey: 'catalogvalueid' });
 
 
-export default Catalogvalue;
+module.exports = Catalogvalue;

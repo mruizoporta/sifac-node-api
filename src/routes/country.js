@@ -1,8 +1,8 @@
-import { Router } from "express";
+const { Router } = require('express');
 
 const router = Router();
 
-import { getCountrybyCode, getCountry, getOneCountry } from '../controllers/country.controller.js';
+const { getCountrybyCode, getCountry, getOneCountry } = require('../controllers/country.controller.js');
 
 //api/country/
 router.get('/', getCountry);

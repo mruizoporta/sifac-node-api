@@ -1,8 +1,7 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
 const router = Router();
-import { createProduct, getProduct, updateProduct, inactivarProduct, getOneProduct, getProductStore } from '../controllers/product.controller';
-
+const { createProduct, getProduct, updateProduct, inactivarProduct, getOneProduct, getProductStore } = require('../controllers/product.controller');
 
 //api/product/
 router.post('/', createProduct);

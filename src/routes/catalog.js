@@ -1,7 +1,7 @@
-import { Router } from "express";
+const { Router } = require('express');
 const router = Router();
 
-import { createCatalog, getCatalog, getOneCatalog, deleteCatalog, updateCatalog } from '../controllers/catalog.controller.js';
+const { createCatalog, getCatalog, getOneCatalog, deleteCatalog, updateCatalog } = require('../controllers/catalog.controller.js');
 //api/catalog/
 router.post('/', createCatalog);
 router.get('/', getCatalog);

@@ -1,4 +1,4 @@
-import Catalog from '../models/basic/Catalog.js';
+const Catalog = require('../models/basic/Catalog.js');
 
 async function createCatalog(req, res) {
     const { name, description, createdon, createdby, modifiedon, modifiedby, isactive } = req.body;

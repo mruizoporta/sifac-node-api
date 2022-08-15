@@ -1,5 +1,5 @@
-import Person from '../models/basic/Person.js';
-import { sequelize } from '../database/database.js';
+const Person = require('../models/basic/Person.js');
+const { sequelize } = require('../database/database.js');
 
 async function createPerson(req, res) {
     const {

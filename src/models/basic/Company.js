@@ -1,11 +1,11 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import CompanyAccount from "./CompanyAccount.js";
-import Category from '../inventory/Category.js';
-import Brands from "./Brands.js";
-import Person from "./Person.js";
-import Routes from "./RoutesCollector.js";
-import Products from "../inventory/Products.js";
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const CompanyAccount = require("./CompanyAccount.js");
+const Category = require('../inventory/Category.js');
+const Brands = require("./Brands.js");
+const Person = require("./Person.js");
+const Routes = require("./RoutesCollector.js");
+const Products = require("../inventory/Products.js");
 
 const Company = sequelize.define('bsc_company', {
     companyid: {
@@ -78,4 +78,4 @@ Company.hasMany(Products, { foreingKey: 'bsc_company_companyid', soourceKey: 'co
 Products.belongsTo(Company, { foreingKey: 'bsc_company_companyid', soourceKey: 'companyid' });
 
 
-export default Company;
+module.exports = Company;

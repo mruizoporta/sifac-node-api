@@ -1,7 +1,7 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import Account from '../security/Account';
-import Routes from "./RoutesCollector.js";
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Account = require('../security/Account');
+const Routes = require("./RoutesCollector.js");
 
 const Employees = sequelize.define('bsc_employees', {
     employeesid: {
@@ -78,4 +78,4 @@ Employees.hasMany(Routes, { foreingKey: 'supervisorid', soourceKey: 'employeesid
 Routes.belongsTo(Employees, { foreingKey: 'supervisorid', soourceKey: 'employeesid' });
 
 
-export default Employees;
+module.exports = Employees;

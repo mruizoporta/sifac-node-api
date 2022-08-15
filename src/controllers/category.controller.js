@@ -1,7 +1,6 @@
 const { response, default: e } = require('express');
 const { generarJWT } = require('../helpers/generar-jwt');
-import Category from '../models/inventory/Category.js';
-
+const Category = require('../models/inventory/Category.js');
 
 async function createCategory(req, res) {
     const { name, description, createdon, createdby, modifiedon, modifiedby, isactive, bsc_company_companyid } = req.body;

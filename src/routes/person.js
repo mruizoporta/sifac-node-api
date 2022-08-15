@@ -1,7 +1,7 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
 const router = Router();
-import { createPerson, getPerson, getPersonClasification, updatePersona } from '../controllers/person.controller.js';
+const { createPerson, getPerson, getPersonClasification, updatePersona } = require('../controllers/person.controller.js');
 
 //api/person/
 router.post('/', createPerson);

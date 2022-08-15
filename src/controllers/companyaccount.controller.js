@@ -1,8 +1,8 @@
 const { response, default: e } = require('express');
 const { generarJWT } = require('../helpers/generar-jwt');
-import CompanyAccount from '../models/basic/CompanyAccount.js';
-import Company from '../models/basic/Company.js';
-import City from '../models/basic/City.js';
+const CompanyAccount = require('../models/basic/CompanyAccount.js');
+const Company = require('../models/basic/Company.js');
+const City = require('../models/basic/City.js');
 
 async function getCompanybyAccount(req, res) {
     const { accountid } = req.params;

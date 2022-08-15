@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Zone = sequelize.define('bsc_zone', {
     zoneid: {
@@ -45,4 +45,4 @@ const Zone = sequelize.define('bsc_zone', {
 // Routes.belongsTo(Zone, { foreingKey: 'zoneid', soourceKey: 'zoneid' });
 
 
-export default Zone;
+module.exports = { Zone };

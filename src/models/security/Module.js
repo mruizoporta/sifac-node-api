@@ -1,6 +1,6 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import Userservice from '../security/Userservice';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Userservice = require('../security/Userservice');
 
 const Module = sequelize.define('sec_role', {
     moduleid: {
@@ -53,4 +53,4 @@ const Module = sequelize.define('sec_role', {
 Module.hasMany(Userservice, { foreingKey: 'moduleid', soourceKey: 'moduleid' });
 Userservice.belongsTo(Module, { foreingKey: 'moduleid', soourceKey: 'moduleid' });
 
-export default Module;
+module.exports = Module;

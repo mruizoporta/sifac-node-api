@@ -1,8 +1,7 @@
-import { Router } from 'express';
-
+const { Router } = require('express');
 
 const router = Router();
-import { createContact, getOneContactobyPerson, deleteContact, updateContact } from '../controllers/contact.controller';
+const { createContact, getOneContactobyPerson, deleteContact, updateContact } = require('../controllers/contact.controller');
 
 
 //api/contact/

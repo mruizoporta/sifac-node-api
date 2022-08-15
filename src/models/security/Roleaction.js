@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Roleaction = sequelize.define('sec_roleaction', {
     roleactionid: {
@@ -37,4 +37,4 @@ const Roleaction = sequelize.define('sec_roleaction', {
     underscored: true
 });
 
-export default Roleaction;
+module.exports = Roleaction;

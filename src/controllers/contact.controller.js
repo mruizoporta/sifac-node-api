@@ -1,4 +1,4 @@
-import Contact from '../models/basic/Contact.js';
+const Contact = require('../models/basic/Contact.js');
 
 async function createContact(req, res) {
     const {

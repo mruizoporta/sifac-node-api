@@ -1,6 +1,6 @@
-const { response } = require('express');
-import { comparar } from '../helpers/handleBcrypt.js';
-import Account from '../models/security/Account.js';
+// const { response } = require('express');
+const { comparar } = require('../helpers/handleBcrypt.js');
+const Account = require('../models/security/Account.js');
 const { generarJWT } = require('../helpers/generar-jwt');
 
 const loginUsuario = async(req, res = response) => {

@@ -1,8 +1,6 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../../database/database.js';
-
-import City from './city.js';
-import Person from './Person';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const City = require('./city.js');
 
 const Country = sequelize.define('bsc_country', {
     countryid: {
@@ -43,4 +41,4 @@ const Country = sequelize.define('bsc_country', {
 Country.hasMany(City, { as: 'city', foreingKey: 'country_countryid', soourceKey: 'countryid' });
 City.belongsTo(Country, { as: 'country', foreingKey: 'country_countryid', soourceKey: 'countryid' });
 
-export default Country;
+module.exports = Country;

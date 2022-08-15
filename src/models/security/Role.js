@@ -1,7 +1,7 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import Roleaction from '../security/Roleaction';
-import Accountrole from '../security/Accountrole';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Roleaction = require('../security/Roleaction');
+const Accountrole = require('../security/Accountrole');
 
 const Role = sequelize.define('sec_role', {
     roleid: {
@@ -53,4 +53,4 @@ Roleaction.belongsTo(Role, { foreingKey: 'roleid', soourceKey: 'roleid' });
 Role.hasMany(Accountrole, { foreingKey: 'roleid', soourceKey: 'roleid' });
 Accountrole.belongsTo(Role, { foreingKey: 'roleid', soourceKey: 'roleid' });
 
-export default Role;
+module.exports = Role;

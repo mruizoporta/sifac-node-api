@@ -1,6 +1,6 @@
 const { default: Employees } = require("../models/basic/Employees");
 const { default: Person } = require("../models/basic/Person");
-import { sequelize } from '../database/database.js';
+const { sequelize } = require('../database/database.js');
 
 async function getEmpleado(req, res) {
     const { companyid } = req.params;

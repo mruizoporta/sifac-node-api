@@ -1,7 +1,7 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import Accountrole from '../security/Accountrole';
-import CompanyAccount from '../basic/CompanyAccount'
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Accountrole = require('../security/Accountrole');
+const CompanyAccount = require('../basic/CompanyAccount');
 
 const Account = sequelize.define('sec_account', {
     accountid: {
@@ -88,4 +88,4 @@ Account.findAll({
 });
 
 
-export default Account;
+module.exports = Account;

@@ -1,7 +1,6 @@
 const { response, default: e } = require('express');
 const { generarJWT } = require('../helpers/generar-jwt');
-import Brand from '../models/basic/Brands.js';
-
+const Brand = require('../models/basic/Brands.js');
 
 async function createBrand(req, res) {
     const { name, description, createdon, createdby, modifiedon, modifiedby, isactive, bsc_company_companyid } = req.body;

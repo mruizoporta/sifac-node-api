@@ -1,8 +1,6 @@
-import { Router } from 'express';
-
+const { Router } = require('express');
 const router = Router();
-
-import { getCity, getOneCity, getCitybyCountry } from '../controllers/city.controller.js';
+const { getCity, getOneCity, getCitybyCountry } = require('../controllers/city.controller.js');
 
 //api/city/
 router.get('/', getCity);

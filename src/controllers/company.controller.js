@@ -1,6 +1,6 @@
 const { response, default: e } = require('express');
 const { generarJWT } = require('../helpers/generar-jwt');
-import Company from '../models/basic/Company.js';
+const Company = require('../models/basic/Company.js');
 
 
 async function getCompany(req, res) {

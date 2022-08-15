@@ -1,8 +1,7 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
 const router = Router();
-
-import { getCompany } from '../controllers/company.controller.js';
+const { getCompany } = require('../controllers/company.controller.js');
 
 //api/company/
 router.get('/', getCompany);

@@ -1,5 +1,5 @@
-import Store from '../models/inventory/Store.js';
-import { sequelize } from '../database/database.js';
+const Store = require('../models/inventory/Store.js');
+const { sequelize } = require('../database/database.js');
 
 async function createStore(req, res) {
     const {

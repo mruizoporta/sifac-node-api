@@ -1,5 +1,5 @@
-import Routes from "../models/basic/RoutesCollector";
-import { sequelize } from '../database/database.js';
+const Routes = require("../models/basic/RoutesCollector");
+const { sequelize } = require('../database/database.js');
 
 async function createRoutes(req, res) {
     const {

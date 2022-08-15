@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Classificationperson = sequelize.define('bsc_classificationperson', {
     classificationpersonid: {
@@ -33,4 +33,4 @@ const Classificationperson = sequelize.define('bsc_classificationperson', {
     underscored: true
 });
 
-export default Classificationperson;
+module.exports = Classificationperson;

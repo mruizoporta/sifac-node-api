@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Action = sequelize.define('sec_action', {
     actionid: {
@@ -52,4 +52,4 @@ const Action = sequelize.define('sec_action', {
 Action.hasMany(Roleaction, { foreingKey: 'actionid', soourceKey: 'actionid' });
 Roleaction.belongsTo(Action, { foreingKey: 'actionid', soourceKey: 'actionid' });
 
-export default Action;
+module.exports = Action;

@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Accountrole = sequelize.define('sec_accountrole', {
     accountroled: {
@@ -37,4 +37,4 @@ const Accountrole = sequelize.define('sec_accountrole', {
     underscored: true
 });
 
-export default Accountrole;
+module.exports = Accountrole;

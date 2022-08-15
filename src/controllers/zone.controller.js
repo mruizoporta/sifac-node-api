@@ -1,4 +1,4 @@
-import Zone from "../models/basic/zone";
+const Zone = require("../models/basic/zone");
 
 async function createZone(req, res) {
     const {

@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const { loginUsuario, revalidarToken } = require('../controllers/auth.controller');
 const { validarJWT } = require('../middlewares/validar-jwt');
-import { validarCampos } from "../middlewares/validar-campos";
+const { validarCampos } = require("../middlewares/validar-campos");
 
 const router = Router();
 

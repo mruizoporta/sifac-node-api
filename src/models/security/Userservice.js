@@ -1,6 +1,6 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import Action from '../security/Action';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Action = require('../security/Action');
 
 const Userservice = sequelize.define('sec_userservice', {
     userserviceid: {
@@ -53,4 +53,4 @@ const Userservice = sequelize.define('sec_userservice', {
 Userservice.hasMany(Action, { foreingKey: 'userserviceid', soourceKey: 'userserviceid' });
 Action.belongsTo(Userservice, { foreingKey: 'userserviceid', soourceKey: 'userserviceid' });
 
-export default Userservice;
+module.exports = Userservice;

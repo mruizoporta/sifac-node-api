@@ -1,14 +1,14 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
 const router = Router();
-import {
+const {
     createProductStore,
     addinventoryProduct,
     restinventoryProduct,
     getProductStore,
     getProductStoreOne,
     updatequantityProduct
-} from '../controllers/product.store.controller';
+} = require('../controllers/product.store.controller');
 
 //api/productstore/
 router.get('/', getProductStore);

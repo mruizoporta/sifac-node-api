@@ -1,5 +1,4 @@
-import Catalogvalue from '../models/basic/Catalogvalue.js';
-
+const Catalogvalue = require('../models/basic/Catalogvalue.js');
 
 async function createCatalogvalue(req, res) {
     const { code, description, catalogid, createdon, createdby, isactive, reserved } = req.body;
@@ -117,7 +116,7 @@ async function getOneCatalogvalue(req, re) {
     }
 }
 
-export async function getCatalogvalueByCatalog(req, res) {
+async function getCatalogvalueByCatalog(req, res) {
     const { name } = req.params;
     try {
 

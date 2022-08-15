@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../../database/database';
-import Products from "../inventory/Products";
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Products = require("../inventory/Products");
 
 const Category = sequelize.define('inv_category', {
     categoryid: {
@@ -50,4 +50,4 @@ const Category = sequelize.define('inv_category', {
 Category.hasMany(Products, { foreingKey: 'categoryid', soourceKey: 'categoryid' });
 Products.belongsTo(Category, { foreingKey: 'categoryid', soourceKey: 'categoryid' });
 
-export default Category;
+module.exports = Category;

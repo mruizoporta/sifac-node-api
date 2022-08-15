@@ -1,7 +1,7 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
-import Role from '../security/Role';
-import Module from '../security/Module';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Role = require('../security/Role');
+const Module = require('../security/Module');
 
 const Application = sequelize.define('sec_application', {
     applicationid: {
@@ -49,4 +49,4 @@ Role.belongsTo(Application, { foreingKey: 'applicationid', soourceKey: 'applicat
 Application.hasMany(Module, { foreingKey: 'applicationid', soourceKey: 'applicationid' });
 Module.belongsTo(Application, { foreingKey: 'applicationid', soourceKey: 'applicationid' });
 
-export default Application;
+module.exports = Application;

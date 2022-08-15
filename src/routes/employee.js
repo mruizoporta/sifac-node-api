@@ -1,7 +1,7 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
 const router = Router();
-import { createEmpleado, createEmpleadoWithPerson, getEmpleado, updateEmployee, getOneEmployee, inactivarEmployee } from '../controllers/empleado.controller';
+const { createEmpleado, createEmpleadoWithPerson, getEmpleado, updateEmployee, getOneEmployee, inactivarEmployee } = require('../controllers/empleado.controller');
 
 //api/empleado/
 router.post('/', createEmpleado);

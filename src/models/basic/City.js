@@ -1,8 +1,8 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../../database/database.js';
-import Company from './Company';
-import Person from './Person';
-import Routes from './RoutesCollector.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
+const Company = require('./Company');
+const Person = require('./Person');
+const Routes = require('./RoutesCollector.js');
 //import Country from './Country.js';
 
 const City = sequelize.define('bsc_city', {
@@ -56,4 +56,4 @@ Routes.belongsTo(City, { foreingKey: 'bsc_city_cityid', soourceKey: 'cityid' });
 // City.hasMany(Company, { as: 'company', foreingKey: 'city_cityid', soourceKey: 'cityid' });
 // Company.belongsTo(City, { as: 'company_city', foreingKey: 'city_cityid', soourceKey: 'cityid' });
 
-export default City;
+module.exports = City;

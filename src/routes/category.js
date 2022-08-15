@@ -1,10 +1,7 @@
-import { Router } from 'express';
-
+const { Router } = require('express');
 const router = Router();
 
-import { getCategory, createCategory, updateCategory, inactivarCategory } from '../controllers/category.controller.js';
-
-
+const { getCategory, createCategory, updateCategory, inactivarCategory } = require('../controllers/category.controller.js');
 
 //api/category/
 router.post('/', createCategory);

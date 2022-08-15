@@ -1,8 +1,6 @@
-import { Router } from 'express';
-
+const { Router } = require('express');
 const router = Router();
-import { createStore, getStore, getOneStore, updateStore, inactivarStore } from '../controllers/store.controller';
-
+const { createStore, getStore, getOneStore, updateStore, inactivarStore } = require('../controllers/store.controller');
 
 //api/store/
 router.post('/', createStore);

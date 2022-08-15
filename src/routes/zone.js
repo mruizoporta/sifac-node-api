@@ -1,9 +1,6 @@
-import { Router } from 'express';
-
-
+const { Router } = require('express');
 const router = Router();
-import { getZones, createZone, inactivarZona, updateZona } from '../controllers/zone.controller';
-
+const { getZones, createZone, inactivarZona, updateZona } = require('../controllers/zone.controller');
 
 //api/zone/
 router.post('/', createZone);

@@ -1,9 +1,7 @@
-import { Router } from "express";
-import { check } from "express-validator";
-import { validarCampos } from "../middlewares/validar-campos";
-import { esRolValido, emailExiste } from "../helpers/db-validators";
-
-
+const { Router } = require('express');
+const { check } = require("express-validator");
+const { validarCampos } = require("../middlewares/validar-campos");
+const { esRolValido, emailExiste } = require("../helpers/db-validators");
 const { usuariosGet, usuariosPatch, crearUsuario, usuariosPut, usuariosDelete, loginusuario } = require('../controllers/user.controller');
 
 const router = Router();

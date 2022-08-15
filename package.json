@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "nodemon index.js --exec babel-node",
         "build": "babel src --out-dir dist",
-        "start": "node index.js"
+        "start": "node src/index.js"
     },
     "keywords": [],
     "author": "Blessing S.A",

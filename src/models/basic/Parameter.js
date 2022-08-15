@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import { sequelize } from '../../database/database.js';
+const Sequelize = require("sequelize");
+const { sequelize } = require('../../database/database.js');
 
 const Parameter = sequelize.define('bsc_parameter', {
     parameterid: {
@@ -37,4 +37,4 @@ const Parameter = sequelize.define('bsc_parameter', {
     underscored: true
 });
 
-export default Parameter;
+module.exports = Parameter;

@@ -1,4 +1,4 @@
-import City from '../models/basic/City.js';
+const City = require('../models/basic/City.js');
 
 async function getCity(req, res) {
     try {

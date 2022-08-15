@@ -1,8 +1,7 @@
-import { Router } from 'express';
-
+const { Router } = require('express');
 
 const router = Router();
-import { getBrands, createBrand, updateBrand, inactivarBrand } from '../controllers/brand.controller.js';
+const { getBrands, createBrand, updateBrand, inactivarBrand } = require('../controllers/brand.controller.js');
 
 
 //api/brand/
