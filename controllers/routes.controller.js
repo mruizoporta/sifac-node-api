@@ -77,6 +77,18 @@ async function getRoutes(req, res) {
     }
 }
 
+async function getRoutesPropias(req, res) {
+    const { companyid, id } = req.params;
+    try {
+
+        const result = await sequelize.query('select * from public.bsc_RoutesView WHERE accountid=(:vid) AND bsc_company_companyid= (:vcompanyid)', { replacements: { vcompanyid: companyid, vid: id } });
+        res.json(result[0]);
+    } catch (error) {
+
+        console.log(error);
+    }
+}
+
 async function updateRoutes(req, res) {
     const { id } = req.params;
     const { name, code, day, bsc_city_cityid, collectorid, supervisorid, secretariaid, zoneid, modifiedon, modifiedby } = req.body;
@@ -181,5 +193,6 @@ module.exports = {
     createRoutes,
     getRoutes,
     updateRoutes,
-    inactivarRoutes
+    inactivarRoutes,
+    getRoutesPropias
 }

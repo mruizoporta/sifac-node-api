@@ -23,9 +23,7 @@ async function createProduct(req, res) {
         psr,
         brandid,
         bsc_company_companyid,
-        quantity,
-        email,
-        telefono
+        quantity
     } = req.body;
 
     try {
@@ -47,9 +45,7 @@ async function createProduct(req, res) {
             modifiedby,
             isactive,
             psr,
-            bsc_company_companyid,
-            email,
-            telefono
+            bsc_company_companyid
         });
 
         if (newProducts) {
@@ -157,15 +153,13 @@ async function updateProduct(req, res) {
         modifiedby,
         brandid,
         quantity,
-        psr,
-        email,
-        telefono
+        psr
     } = req.body;
     try {
         const products = await Products.findAll({
             attributes: ['productsid', 'name', 'code', 'inv_category_categoryid', "bsc_brand_brandid",
                 'minimumquantity', 'utilitymargin_credit', 'utilitymargin_cash',
-                'averagecost', 'creditprice', 'cashprice', 'modifiedon', 'modifiedby', 'isactive', 'psr', 'email', 'telefono'
+                'averagecost', 'creditprice', 'cashprice', 'modifiedon', 'modifiedby', 'isactive', 'psr'
             ],
             where: {
                 productsid: id
@@ -188,8 +182,6 @@ async function updateProduct(req, res) {
                             creditprice,
                             cashprice,
                             psr,
-                            email,
-                            telefono,
                             modifiedon,
                             modifiedby
 

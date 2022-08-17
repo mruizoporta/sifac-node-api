@@ -2,6 +2,7 @@ const { response, default: e } = require('express');
 const { generarJWT } = require('../helpers/generar-jwt');
 const { Account } = require('../models/security/Account.js');
 const { encrypt } = require('../helpers/handleBcrypt.js');
+const { sequelize } = require('../database/database.js');
 
 async function usuariosGet(req, res) {
     try {
@@ -77,6 +78,19 @@ const usuariosPut = (req, res = response) => {
     res.json({ msg: 'Put API - Controlador' });
 }
 
+async function getUsuarioInformacion(req, res) {
+    const { id } = req.params;
+    try {
+
+        const result = await sequelize.query('select * from public.sec_accountview WHERE accountid= (:vid)', { replacements: { vid: id, } });
+
+        res.json(result[0][0]);
+    } catch (error) {
+
+        console.log(error);
+    }
+}
+
 const usuariosPatch = (req, res = response) => {
     res.json({ msg: 'Patch API - Controlador' });
 }
@@ -90,5 +104,6 @@ module.exports = {
     crearUsuario,
     usuariosPut,
     usuariosPatch,
-    usuariosDelete
+    usuariosDelete,
+    getUsuarioInformacion
 }

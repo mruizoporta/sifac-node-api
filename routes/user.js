@@ -2,11 +2,12 @@ const { Router } = require('express');
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validar-campos");
 const { esRolValido, emailExiste } = require("../helpers/db-validators");
-const { usuariosGet, usuariosPatch, crearUsuario, usuariosPut, usuariosDelete, loginusuario } = require('../controllers/user.controller');
+const { usuariosGet, usuariosPatch, crearUsuario, usuariosPut, usuariosDelete, loginusuario, getUsuarioInformacion } = require('../controllers/user.controller');
 
 const router = Router();
 
 router.get('/', usuariosGet);
+router.get('/info/:id', getUsuarioInformacion);
 router.put('/', usuariosPut);
 
 router.post('/', [
