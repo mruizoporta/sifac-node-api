@@ -78,7 +78,7 @@ async function updateContact(req, re) {
 
 
 function deleteContact(req, res) {
-    const { personid } = req.params;
+    const { personid } = req.body;
     try {
         const deleteRowCount = Contact.destroy({
             where: {

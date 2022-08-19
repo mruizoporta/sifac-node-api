@@ -136,11 +136,32 @@ async function getCatalogvalueByCatalog(req, res) {
     }
 }
 
+async function getCatalogvalueByCatalogandCode(req, res) {
+    const { name, code } = req.params;
+    try {
+
+        await Catalogvalue.sequelize.query('SELECT * FROM public.bsc_GetCatalogValuescode (:vname, :vcode)', { replacements: { vname: name, vcode: code } }, { type: Catalogvalue.sequelize.QueryTypes.SELECT })
+            .then(function(catalogvalue) {
+                res.json(catalogvalue[0])
+            });
+        // .error(function(err) {
+        //     res.json(err);
+        // });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error + "Error al obtener los catalogos.",
+            data: {}
+        });
+    }
+}
+
 module.exports = {
     createCatalogvalue,
     getCatalogvalue,
     updateCatalogvalue,
     deleteCatalogvalue,
     getOneCatalogvalue,
-    getCatalogvalueByCatalog
+    getCatalogvalueByCatalog,
+    getCatalogvalueByCatalogandCode
 }
