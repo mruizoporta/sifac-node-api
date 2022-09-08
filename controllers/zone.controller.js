@@ -1,5 +1,6 @@
 const Zone = require('../models/basic/Zone').Zone;
 const { response } = require('express');
+const { sequelize } = require('../database/database.js');
 
 async function getZones(req, res = response) {
     const { companyid } = req.params;
@@ -124,6 +125,24 @@ async function updateZona(req, res) {
 
 }
 
+
+async function getZonesbyName(req, res) {
+    const { name } = req.params;
+    try {
+
+        await Zone.sequelize.query('SELECT * FROM public.bsc_getZonebyName (:vname)', { replacements: { vname: name, } }, { type: Zone.sequelize.QueryTypes.SELECT })
+            .then(function(zone) {
+                res.json(zone[0])
+            });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error + "Error al obtener las zonas.",
+            data: {}
+        });
+    }
+}
+
 async function inactivarZona(req, res) {
     const { id } = req.params;
     try {
@@ -162,5 +181,6 @@ module.exports = {
     getZones,
     createZone,
     inactivarZona,
-    updateZona
+    updateZona,
+    getZonesbyName
 }
