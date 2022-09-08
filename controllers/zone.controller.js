@@ -126,7 +126,7 @@ async function updateZona(req, res) {
 }
 
 
-async function getZonesbyName(req, res) {
+async function getZonebyName(req, res) {
     const { name } = req.params;
     try {
 
@@ -182,5 +182,5 @@ module.exports = {
     createZone,
     inactivarZona,
     updateZona,
-    getZonesbyName
+    getZonebyName
 }

@@ -137,6 +137,24 @@ async function getProductStore(req, res) {
     }
 }
 
+
+async function getProductbyModel(req, res) {
+    const { name } = req.params;
+    try {
+
+        await Products.sequelize.query('SELECT * FROM public.bsc_getproductsbymodel (:vname)', { replacements: { vname: name, } }, { type: Products.sequelize.QueryTypes.SELECT })
+            .then(function(product) {
+                res.json(product[0])
+            });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error + "Error al obtener los productos.",
+            data: {}
+        });
+    }
+}
+
 async function updateProduct(req, res) {
     const { id } = req.params;
     const {
@@ -305,6 +323,7 @@ module.exports = {
     updateProduct,
     inactivarProduct,
     getOneProduct,
-    getProductStore
+    getProductStore,
+    getProductbyModel
 
 }

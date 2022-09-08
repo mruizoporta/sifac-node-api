@@ -309,6 +309,24 @@ async function updateEmployee(req, res) {
     }
 }
 
+
+async function getEmployeebyIdentification(req, res) {
+    const { name } = req.params;
+    try {
+
+        await Employees.sequelize.query('SELECT * FROM public.bsc_getemployeebyidentificacion (:vname)', { replacements: { vname: name, } }, { type: Employees.sequelize.QueryTypes.SELECT })
+            .then(function(employee) {
+                res.json(employee[0])
+            });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error + "Error al obtener los productos.",
+            data: {}
+        });
+    }
+}
+
 module.exports = {
     getEmpleado,
     getEmpleadoByCombos,
@@ -316,5 +334,6 @@ module.exports = {
     createEmpleadoWithPerson,
     inactivarEmployee,
     updateEmployee,
-    getOneEmployee
+    getOneEmployee,
+    getEmployeebyIdentification
 }
