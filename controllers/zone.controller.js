@@ -130,7 +130,7 @@ async function getZonebyName(req, res) {
     const { name } = req.params;
     try {
 
-        await Zone.sequelize.query('SELECT * FROM public.bsc_getZonebyName (:vname)', { replacements: { vname: name, } }, { type: Zone.sequelize.QueryTypes.SELECT })
+        await Zone.sequelize.query('SELECT *  FROM public.bsc_getZonebyName (:vname)', { replacements: { vname: name, } }, { type: Zone.sequelize.QueryTypes.SELECT })
             .then(function(zone) {
                 res.json(zone[0])
             });
