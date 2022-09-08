@@ -156,11 +156,30 @@ async function getOneBrand(req, res) {
     }
 }
 
+
+async function getBrandbyName(req, res) {
+    const { name } = req.params;
+    try {
+
+        await Brands.sequelize.query('SELECT *  FROM public.bsc_getbrandsbyname(:vname)', { replacements: { vname: name, } }, { type: Brands.sequelize.QueryTypes.SELECT })
+            .then(function(brand) {
+                res.json(brand[0])
+            });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error + "Error al obtener las zonas.",
+            data: {}
+        });
+    }
+}
+
 module.exports = {
     getBrands,
     createBrand,
     updateBrand,
     getOneBrand,
-    inactivarBrand
+    inactivarBrand,
+    getBrandbyName
 
 }

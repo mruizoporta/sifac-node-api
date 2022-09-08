@@ -152,11 +152,31 @@ async function getOneCategory(req, res) {
         });
     }
 }
+
+
+async function getCategorybyName(req, res) {
+    const { name } = req.params;
+    try {
+
+        await Category.sequelize.query('SELECT *  FROM public.bsc_getcategoryyname(:vname)', { replacements: { vname: name, } }, { type: Category.sequelize.QueryTypes.SELECT })
+            .then(function(category) {
+                res.json(category[0])
+            });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error + "Error al obtener las zonas.",
+            data: {}
+        });
+    }
+}
+
 module.exports = {
     getCategory,
     createCategory,
     updateCategory,
     getOneCategory,
-    inactivarCategory
+    inactivarCategory,
+    getCategorybyName
 
 }
